@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>508 Bellevue Ln — Guest Guidebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage: #6E8560;
+    --sage-deep: #55694A;
+    --sage-pale: #E4EADD;
+    --cream: #F6F3EC;
+    --card: #FFFFFF;
+    --ink: #372B22;
+    --ink-soft: #6B5F53;
+    --line: #E4DDCF;
+    --gold: #B8A06B;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    letter-spacing:.02em;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.68rem;
+    color:var(--sage-deep);
+    font-weight:500;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:6rem 1.5rem 4rem;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(110,133,96,.16), transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(184,160,107,.14), transparent 50%),
+      var(--cream);
+  }
+  .hero .blob{
+    position:absolute;
+    border-radius:58% 42% 63% 37% / 41% 55% 45% 59%;
+    background:var(--sage);
+    opacity:.16;
+  }
+  .hero .blob.b1{width:420px;height:420px;top:-140px;left:-140px;}
+  .hero .blob.b2{width:340px;height:340px;bottom:-160px;right:-100px;background:var(--gold);opacity:.14;}
+  .hero-inner{position:relative;z-index:2;max-width:640px;}
+  .hero h1{
+    font-size:clamp(3rem,9vw,5.2rem);
+    color:var(--ink);
+    line-height:.95;
+  }
+  .hero .sub{
+    margin-top:1.4rem;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+  }
+  .hero .addr{
+    margin-top:2.2rem;
+    display:inline-block;
+    background:var(--sage);
+    color:#fff;
+    padding:.9rem 2rem;
+    border-radius:999px;
+    font-family:'Jost',sans-serif;
+    letter-spacing:.04em;
+    font-size:.92rem;
+  }
+
+  /* ---------- Sticky nav ---------- */
+  .navwrap{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(246,243,236,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;
+    gap:.4rem;
+    overflow-x:auto;
+    padding:.85rem 1.2rem;
+    scrollbar-width:none;
+    max-width:920px;
+    margin:0 auto;
+  }
+  nav::-webkit-scrollbar{display:none;}
+  nav a{
+    flex:0 0 auto;
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:.82rem;
+    letter-spacing:.03em;
+    padding:.5rem 1rem;
+    border-radius:999px;
+    border:1px solid transparent;
+    white-space:nowrap;
+    transition:all .2s ease;
+  }
+  nav a:hover{border-color:var(--sage);color:var(--sage-deep);}
+  nav a.active{background:var(--sage);color:#fff;}
+
+  /* ---------- Sections ---------- */
+  .wrap{max-width:920px;margin:0 auto;padding:0 1.4rem;}
+  section{padding:4.2rem 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:2.2rem;}
+  .section-head h2{font-size:clamp(2rem,5vw,2.6rem);color:var(--ink);margin-top:.3rem;}
+  .section-head p.lede{color:var(--ink-soft);margin-top:.6rem;max-width:560px;font-size:.98rem;}
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:1.6rem 1.8rem;
+  }
+
+  /* Check-in numbered steps */
+  .steps{display:flex;flex-direction:column;gap:1.4rem;}
+  .step{display:flex;gap:1.1rem;align-items:flex-start;}
+  .step .num{
+    flex:0 0 auto;
+    width:2.2rem;height:2.2rem;
+    border-radius:50%;
+    background:var(--sage-pale);
+    color:var(--sage-deep);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.1rem;
+  }
+  .step .body h4{font-family:'Jost';font-weight:500;font-size:1rem;margin:0 0 .25rem;color:var(--ink);}
+  .step .body p{margin:0;color:var(--ink-soft);font-size:.94rem;}
+  .callout{
+    margin-top:1.6rem;
+    background:var(--sage-pale);
+    border-left:3px solid var(--sage);
+    padding:.9rem 1.2rem;
+    border-radius:0 10px 10px 0;
+    font-size:.9rem;
+    color:var(--sage-deep);
+  }
+
+  /* Two-col grid for amenities / wifi */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+  .pill-list{list-style:none;margin:0;padding:0;}
+  .pill-list li{
+    padding:.6rem 0;
+    border-bottom:1px dashed var(--line);
+    font-size:.94rem;
+    color:var(--ink);
+  }
+  .pill-list li:last-child{border-bottom:none;}
+  .card h3{font-size:1.35rem;color:var(--sage-deep);margin-bottom:.6rem;}
+
+  .wifi-card{
+    background:var(--sage-deep);
+    color:#fff;
+    border-radius:16px;
+    padding:1.4rem 1.6rem;
+  }
+  .wifi-card .net{font-family:'Jost';font-weight:500;font-size:1rem;}
+  .wifi-card .pass{font-family:'Cormorant Garamond';font-size:1.3rem;letter-spacing:.02em;}
+  .wifi-card + .wifi-card{margin-top:1rem;}
+
+  /* checklist for checkout */
+  .checklist{list-style:none;margin:0;padding:0;counter-reset:step;}
+  .checklist li{
+    counter-increment:step;
+    display:flex;gap:1rem;
+    padding:.75rem 0;
+    border-bottom:1px solid var(--line);
+    font-size:.94rem;
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist li::before{
+    content:counter(step);
+    flex:0 0 auto;
+    width:1.7rem;height:1.7rem;
+    border:1.5px solid var(--sage);
+    color:var(--sage-deep);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond';font-weight:600;font-size:.9rem;
+  }
+
+  /* notice box */
+  .notice{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--gold);
+    border-radius:0 14px 14px 0;
+    padding:1.1rem 1.4rem;
+    font-size:.92rem;
+    color:var(--ink-soft);
+    margin-bottom:1rem;
+  }
+  .notice b{color:var(--ink);}
+
+  /* explore cards */
+  .tag-grid{display:flex;flex-wrap:wrap;gap:.7rem;}
+  .tag{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:.75rem 1.1rem;
+    border-radius:12px;
+    font-size:.92rem;
+    color:var(--ink);
+    flex:1 1 200px;
+  }
+  .tag .kicker{display:block;font-family:'Jost';font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:.2rem;}
+
+  /* distance list */
+  .dist-list{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 2rem;}
+  @media(max-width:640px){.dist-list{grid-template-columns:1fr;}}
+  .dist-row{
+    display:flex;justify-content:space-between;
+    padding:.55rem 0;
+    border-bottom:1px dashed var(--line);
+    font-size:.92rem;
+  }
+  .dist-row span:first-child{color:var(--ink);}
+  .dist-row span:last-child{color:var(--sage-deep);font-family:'Cormorant Garamond';font-weight:600;font-size:1.05rem;}
+
+  /* restaurants */
+  .resto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+  @media(max-width:640px){.resto-grid{grid-template-columns:1fr;}}
+  .resto{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:1.1rem 1.3rem;
+  }
+  .resto .name{font-family:'Cormorant Garamond';font-weight:600;font-style:italic;font-size:1.2rem;color:var(--ink);}
+  .resto .type{font-size:.82rem;color:var(--ink-soft);margin-top:.15rem;}
+
+  /* host favorites */
+  .fav-item{padding:1rem 0;border-bottom:1px solid var(--line);}
+  .fav-item:last-child{border-bottom:none;}
+  .fav-item .name{font-family:'Cormorant Garamond';font-weight:600;font-size:1.15rem;color:var(--ink);}
+  .fav-item .meta{font-size:.88rem;color:var(--ink-soft);margin-top:.2rem;}
+
+  footer{
+    text-align:center;
+    padding:5rem 1.5rem 4rem;
+    background:var(--sage-deep);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  footer h2{font-size:clamp(1.8rem,5vw,2.4rem);color:#fff;}
+  footer p{color:rgba(255,255,255,.75);margin-top:.6rem;}
+
+  a.link-btn{
+    display:inline-flex;align-items:center;gap:.4rem;
+    color:var(--sage-deep);
+    text-decoration:none;
+    font-size:.9rem;
+    border-bottom:1px solid var(--sage);
+    padding-bottom:2px;
+  }
+
+  /* Show Some Love */
+  .love-card{
+    background:var(--sage-pale);
+    border-radius:20px;
+    padding:2.2rem 2.2rem;
+  }
+  .love-card label{
+    display:block;
+    font-family:'Jost';
+    font-weight:500;
+    font-size:.92rem;
+    color:var(--sage-deep);
+    margin:1.3rem 0 .5rem;
+  }
+  .love-card label:first-child{margin-top:0;}
+  .stars{font-size:2rem;letter-spacing:.35rem;cursor:pointer;user-select:none;}
+  .stars span{color:#CFC3AE;transition:color .15s ease;}
+  .stars span.on, .stars span:hover, .stars span:hover ~ span{color:var(--gold);}
+  .stars{direction:rtl;display:inline-flex;}
+  .stars span{display:inline-block;}
+  .love-card textarea{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#fff;
+    padding:.85rem 1rem;
+    font-family:'Jost';
+    font-size:.92rem;
+    color:var(--ink);
+    resize:vertical;
+    min-height:70px;
+  }
+  .love-card textarea:focus{outline:2px solid var(--sage);}
+  .love-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  @media(max-width:640px){.love-row{grid-template-columns:1fr;}}
+  .love-row input{
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#fff;
+    padding:.7rem 1rem;
+    font-family:'Jost';
+    font-size:.92rem;
+    color:var(--ink);
+  }
+  .love-row input:focus{outline:2px solid var(--sage);}
+  .love-actions{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+  .btn-primary{
+    background:var(--sage-deep);
+    color:#fff;
+    border:none;
+    padding:.85rem 1.8rem;
+    border-radius:999px;
+    font-family:'Jost';
+    font-size:.9rem;
+    letter-spacing:.02em;
+    cursor:pointer;
+    transition:background .2s ease;
+  }
+  .btn-primary:hover{background:var(--sage);}
+  .love-thanks{
+    font-size:.88rem;
+    color:var(--sage-deep);
+    display:none;
+  }
+  .love-thanks.show{display:inline-block;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">KM Homes</p>
+    <h1>Welcome</h1>
+    <p class="sub">Everything you need for a smooth, comfortable stay — scroll down whenever you need it.</p>
+    <div class="addr">508 Bellevue Ln · Arlington, TX 76012</div>
+  </div>
+</div>
+
+<div class="navwrap">
+  <nav id="nav">
+    <a href="#checkin">Check-In</a>
+    <a href="#wifi">WiFi</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#thermostat">Thermostat</a>
+    <a href="#checkout">Check-Out</a>
+    <a href="#know">Good to Know</a>
+    <a href="#trash">Trash</a>
+    <a href="#explore">Explore</a>
+    <a href="#dine">Dine</a>
+    <a href="#favorites">Host Favorites</a>
+    <a href="#love">Show Some Love</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+  <section id="checkin">
+    <div class="section-head">
+      <p class="eyebrow">Arrival</p>
+      <h2>Check-In Process</h2>
+      <p class="lede">We're excited to host you! Here's everything to make your arrival seamless.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div class="body">
+          <h4>Parking</h4>
+          <p>Driveway is recommended. The garage is smaller than a traditional size (1 small car max) — the clicker is inside the home. Street parking is first come, first served.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="body">
+          <h4>Front door code</h4>
+          <p>Your unique code is sent via "Booking Details" in the Airbnb app — not by the host directly. When unlocking, wait for the lock to whirr <b>twice</b> and come to a complete stop before turning it. Turning too early can cause a failed unlock and lock you out after repeated attempts.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="body">
+          <h4>Shoes off, please</h4>
+          <p>Use the shoe rack at the front entrance and remove your shoes to help keep the home clean for everyone.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div class="body">
+          <h4>Manual keys (optional)</h4>
+          <p>Cowboys key opens the bottom doorknob lock; the gold Minute key opens the Schlage smart lock. We recommend sticking with the electronic lock and leaving the bottom knob unlocked, so you can come and go easily with the door code.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div class="body">
+          <h4>WiFi</h4>
+          <p>Connect using either network listed in the WiFi section below.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout">Please monitor the automated messages daily so you don't miss anything important — and reach out anytime with questions.</div>
+  </section>
+
+  <section id="wifi">
+    <div class="section-head">
+      <p class="eyebrow">Stay connected</p>
+      <h2>WiFi</h2>
+    </div>
+    <div class="wifi-card">
+      <div class="net">508 Bellevue</div>
+      <div class="pass">Welcome123!</div>
+    </div>
+    <div class="wifi-card">
+      <div class="net">ATTFCclYwg</div>
+      <div class="pass">8c7akvt#ngp8</div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="section-head">
+      <p class="eyebrow">What's here</p>
+      <h2>Amenities</h2>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Basics</h3>
+        <ul class="pill-list">
+          <li>Towels</li>
+          <li>Bedsheets</li>
+          <li>Soap, shampoo, conditioner</li>
+          <li>Cleaning products</li>
+          <li>Bidet</li>
+          <li>Bunkrooms</li>
+          <li>Queen bed</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Extras</h3>
+        <ul class="pill-list">
+          <li>Work desk and ergonomic chair</li>
+          <li>Pets allowed for a fee</li>
+          <li>Oversized Connect 4 game</li>
+          <li>Crib and Pack 'N Play</li>
+          <li>In-unit washer and dryer</li>
+          <li>Private garage</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">Please treat these amenities with care — they're used by future guests too!</div>
+  </section>
+
+  <section id="thermostat">
+    <div class="section-head">
+      <p class="eyebrow">Good to know</p>
+      <h2>Using the Nest Thermostat</h2>
+      <p class="lede">First-generation Nest — here's a quick video walkthrough.</p>
+    </div>
+    <div class="card">
+      <a class="link-btn" href="https://www.youtube.com/watch?v=cD4ZVG3C7As" target="_blank" rel="noopener">Watch: How to use the Nest Thermostat ↗</a>
+    </div>
+  </section>
+
+  <section id="checkout">
+    <div class="section-head">
+      <p class="eyebrow">Before you leave</p>
+      <h2>Check-Out Process</h2>
+      <p class="lede">Follow these steps for a smooth, efficient checkout.</p>
+    </div>
+    <ul class="checklist">
+      <li>If applicable, properly dispose of any pet waste — failure to do so results in an additional fee.</li>
+      <li>If applicable, clean the grill if it was used — failure to do so results in an additional fee.</li>
+      <li>Load and run the dishwasher with any used dishes (do not use the heat function).</li>
+      <li>Place all towels in the washer, add 1 Tide pod, and run a cold wash. Drying them too, if you're able, is a big help.</li>
+      <li>Throw away all trash, including refrigerated items. If more than 2 bags, place them in the outdoor trash can on the side of the house.</li>
+      <li>Gather all belongings — any leftover items will be discarded and not shipped after checkout.</li>
+      <li>Set the thermostat to 72–74°F.</li>
+      <li>Return any moved furniture or items to their original positions.</li>
+      <li>Secure the property — make sure all windows are closed and locked.</li>
+      <li>Turn off all lights and appliances.</li>
+      <li>Return the garage clicker and house keys to the black key holder near the front door.</li>
+      <li>Lock the front door using the electronic lock.</li>
+    </ul>
+  </section>
+
+  <section id="know">
+    <div class="section-head">
+      <p class="eyebrow">A few notes</p>
+      <h2>Items to Know</h2>
+    </div>
+    <div class="notice"><b>Late checkout</b> — ask us about our additional-cost late checkout option; 11 AM is the latest our cleaner can allow.</div>
+    <div class="notice"><b>Trash day</b> — every Wednesday morning. Place the bin between the two homes of the duplex, on the curb, even if you have no trash of your own (there may be a previous guest's to dispose of).</div>
+    <div class="notice"><b>Sound machine</b> — available in the bunk room, if needed.</div>
+    <div class="notice"><b>House Rules</b> — this is not a hotel, so please reference the House Rules. Any damages or stains will be charged.</div>
+  </section>
+
+  <section id="trash">
+    <div class="section-head">
+      <p class="eyebrow">City of Arlington</p>
+      <h2>Trash Pickup</h2>
+      <p class="lede">Pickup is every Wednesday morning.</p>
+    </div>
+    <div class="card">
+      <p style="margin:0;color:var(--ink-soft);font-size:.94rem;">Take any trash to the outdoor bin, or add to the bin if one was already left from a previous stay. Place the bin in the <b>middle of the curb between the two homes</b> — the trash service will not collect anything left next to the mailbox. Keep it clear of the driveway and out of the neighbor's way. Once collected, please return the bin to its original spot at the side of the house.</p>
+      <div class="callout" style="margin-top:1.2rem;">✔ Drop off in the middle of the shared curb &nbsp; · &nbsp; ✘ Never next to the mailbox</div>
+    </div>
+  </section>
+
+  <section id="explore">
+    <div class="section-head">
+      <p class="eyebrow">Nearby</p>
+      <h2>What to Do</h2>
+    </div>
+    <div class="tag-grid">
+      <div class="tag"><span class="kicker">Sports</span>AT&T Stadium</div>
+      <div class="tag"><span class="kicker">Thrills</span>Six Flags Over Texas</div>
+      <div class="tag"><span class="kicker">Water Park</span>Hurricane Harbor</div>
+      <div class="tag"><span class="kicker">Baseball</span>Globe Life Field</div>
+      <div class="tag"><span class="kicker">Entertainment</span>Texas Live!</div>
+      <div class="tag"><span class="kicker">Western Heritage</span>Fort Worth Stockyards</div>
+      <div class="tag"><span class="kicker">Arcade Bar</span>Cidercade Arlington</div>
+    </div>
+
+    <div class="section-head" style="margin-top:3rem;">
+      <p class="eyebrow">Distances</p>
+      <h2 style="font-size:1.8rem;">Getting to Know the Area</h2>
+    </div>
+    <div class="dist-list">
+      <div class="dist-row"><span>DFW Airport</span><span>20 min</span></div>
+      <div class="dist-row"><span>Downtown Dallas</span><span>30 min</span></div>
+      <div class="dist-row"><span>Downtown Fort Worth</span><span>19 min</span></div>
+      <div class="dist-row"><span>Love Field</span><span>32 min</span></div>
+      <div class="dist-row"><span>American Airlines Center</span><span>25 min</span></div>
+      <div class="dist-row"><span>Walmart</span><span>15 min</span></div>
+      <div class="dist-row"><span>Kroger</span><span>3 min</span></div>
+      <div class="dist-row"><span>QuikTrip</span><span>11 min</span></div>
+      <div class="dist-row"><span>Costco</span><span>16 min</span></div>
+      <div class="dist-row"><span>Whole Foods</span><span>11 min</span></div>
+      <div class="dist-row"><span>High Oak Park (walking trail)</span><span>2 min</span></div>
+    </div>
+  </section>
+
+  <section id="dine">
+    <div class="section-head">
+      <p class="eyebrow">Local favorites</p>
+      <h2>Restaurants</h2>
+    </div>
+    <div class="resto-grid">
+      <div class="resto"><div class="name">The Tipsy Oak</div><div class="type">Burgers &amp; brunch</div></div>
+      <div class="resto"><div class="name">Cut and Bourbon</div><div class="type">Steak house</div></div>
+      <div class="resto"><div class="name">Uncle Julio's</div><div class="type">Tex-Mex dining</div></div>
+      <div class="resto"><div class="name">Soy Cowboy</div><div class="type">Chinese cuisine</div></div>
+      <div class="resto"><div class="name">Hurtado Barbeque</div><div class="type">Texas barbeque</div></div>
+      <div class="resto"><div class="name">Babe's Chicken Dinner House</div><div class="type">Classic Southern fried chicken</div></div>
+    </div>
+  </section>
+
+  <section id="favorites">
+    <div class="section-head">
+      <p class="eyebrow">From your host</p>
+      <h2>Host Favorites &amp; Connections</h2>
+    </div>
+    <div class="card">
+      <div class="fav-item">
+        <div class="name">V's House — Authentic Vietnamese</div>
+        <div class="meta">18 min · Ask for Ryan (owner) and mention you're a guest staying in Kris' Airbnb.</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">Prince Lebanese Grill — Mediterranean &amp; Lebanese</div>
+        <div class="meta">9 min</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">N.Y. Pizzeria</div>
+        <div class="meta">9 min · Ask for Flip Semo (owner) and mention you're a guest staying in Kris' Airbnb in Arlington.</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">Klyde Warren Park</div>
+        <div class="meta">Outdoor park in Dallas</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">Happiest Hour</div>
+        <div class="meta">Rooftop bar in Dallas</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">Soy Cowboy</div>
+        <div class="meta">Ask for the Wagyu fried rice — 10/10</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">Absolute Recomp</div>
+        <div class="meta">Unique bodybuilding gym with state-of-the-art equipment · 3 locations</div>
+      </div>
+      <div class="fav-item">
+        <div class="name">Need a hand with something extra?</div>
+        <div class="meta">For mobile car detailing, or exotic car / party bus rentals, just let your host know.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="love">
+    <div class="section-head">
+      <p class="eyebrow">Before you go</p>
+      <h2>Show Some Love</h2>
+      <p class="lede">We'd love to hear how your stay went — it helps us make the next guest's visit even better.</p>
+    </div>
+    <div class="love-card">
+      <label>Rate your stay</label>
+      <div class="stars" id="stars">
+        <span data-v="5">★</span><span data-v="4">★</span><span data-v="3">★</span><span data-v="2">★</span><span data-v="1">★</span>
+      </div>
+
+      <label for="loveGood">What did you enjoy most?</label>
+      <textarea id="loveGood" placeholder="The comfy beds, the location, the quiet street..."></textarea>
+
+      <label for="loveBetter">Anything we could improve?</label>
+      <textarea id="loveBetter" placeholder="Totally optional — but we're always listening."></textarea>
+
+      <div class="love-row">
+        <div>
+          <label for="loveName">Name (optional)</label>
+          <input id="loveName" type="text" placeholder="Your name">
+        </div>
+        <div>
+          <label for="loveContact">Email or phone (optional)</label>
+          <input id="loveContact" type="text" placeholder="So we can follow up">
+        </div>
+      </div>
+
+      <div class="love-actions">
+        <button class="btn-primary" onclick="sendLove()">Send Feedback</button>
+        <span class="love-thanks" id="loveThanks">Thank you! 💚 Your message has been prepared.</span>
+      </div>
+      <!-- Host note: sendLove() opens a pre-filled email to HOST_EMAIL below.
+           Swap in your real inbox address (and, if you'd like, an Airbnb/Google review link). -->
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p class="eyebrow" style="color:rgba(255,255,255,.75);">KM Homes</p>
+  <h2>Thank you for choosing KM Homes</h2>
+  <p>Welcome to Arlington — enjoy your stay!</p>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('#nav a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + 140;
+    sections.forEach((s,i) => { if(s && s.offsetTop <= y) idx = i; });
+    links.forEach(l => l.classList.remove('active'));
+    links[idx].classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- Show Some Love ----
+  const HOST_EMAIL = "host@example.com"; // TODO: replace with your real email
+  let selectedRating = 0;
+  const starEls = document.querySelectorAll('#stars span');
+  starEls.forEach(s => {
+    s.addEventListener('click', () => {
+      selectedRating = parseInt(s.dataset.v, 10);
+      starEls.forEach(o => o.classList.toggle('on', parseInt(o.dataset.v,10) <= selectedRating));
+    });
+  });
+
+  function sendLove(){
+    const good = document.getElementById('loveGood').value.trim();
+    const better = document.getElementById('loveBetter').value.trim();
+    const name = document.getElementById('loveName').value.trim();
+    const contact = document.getElementById('loveContact').value.trim();
+
+    const subject = encodeURIComponent("Guest feedback — 508 Bellevue Ln");
+    const bodyLines = [
+      `Rating: ${selectedRating ? selectedRating + "/5 ★" : "Not rated"}`,
+      `Enjoyed most: ${good || "—"}`,
+      `Could improve: ${better || "—"}`,
+      `Name: ${name || "—"}`,
+      `Contact: ${contact || "—"}`
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+    window.location.href = `mailto:${HOST_EMAIL}?subject=${subject}&body=${body}`;
+
+    const thanks = document.getElementById('loveThanks');
+    thanks.classList.add('show');
+  }
+</script>
+
+</body>
+</html>
